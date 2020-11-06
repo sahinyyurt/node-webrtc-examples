@@ -37,7 +37,7 @@ function setupExample(example) {
 
 app.get('/', (req, res) => res.redirect(`${examples[0]}/index.html`));
 app.get('/recording', function(req, res){
-  res.sendFile('recording.mp4');
+  res.sendFile('recording.mp4', { root: __dirname });
 }); 
 const connectionManagers = examples.reduce((connectionManagers, example) => {
   const connectionManager = setupExample(example);
