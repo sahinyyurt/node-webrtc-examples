@@ -36,7 +36,9 @@ function setupExample(example) {
 }
 
 app.get('/', (req, res) => res.redirect(`${examples[0]}/index.html`));
-app.use("/recording.mp4", express.static(__dirname + '/recording.mp4'));
+app.get('/recording', function(req, res){
+  res.sendFile('recording.mp4');
+}); 
 const connectionManagers = examples.reduce((connectionManagers, example) => {
   const connectionManager = setupExample(example);
   return connectionManagers.set(example, connectionManager);
